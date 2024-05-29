@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+.rajdhani-regular {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: #0a6cd5;
+    height: 48px;
+}
+
+.title{
+    color: aliceblue;
+}
+
+.nav-bar ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-bar ul li a{
+    text-decoration: none;
+    color: red;
+}
+
+.nav-item{
+    background-color: aliceblue;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item:hover{
+    background-color: white;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item li a:hover{
+    color: rgb(12, 11, 11);
+}
+
+#content{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+/* .section-header{
+
+} */
+
+.detail-title{
+    font-size: 18px;
+}
+
+.text-field{
+    margin-top: -100px;
+    font-size: 20px;
+}
+
+.btn-list{
+    /* gap: -50px; */
+}
+
+.button{
+    margin-top: 28px;
+    height: 30px;
+    margin-right: -3.5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-save{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(75, 201, 223);
+    color: white;
+}
+
+.btn-remove{
+    background-color: rgb(221, 49, 49);
+    color: white;
+}
+
+.btn-update{
+    background-color: rgb(255, 234, 0);
+}
+
+.btn-getall{
+    background-color: green;
+    color: white;
+}
+
+.btn-clearall{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(221, 49, 49);
+    color: white;
+}
+
+
+
+.table table th{
+    background-color: rgb(233, 68, 68);
+    color: whitesmoke;
+}
+
+.table table th, .table table td{
+    font-size: 17px;
+    font-weight: 50;
+    font-family:'Times New Roman', Times, serif;
+    padding-left: 15px;
+
+    width: 20vw;
+    height: 4vw;
+    border: 0.5px solid aliceblue;
+    text-align: left;
+}
+

@@ -1,0 +1,44 @@
+html{
+    padding: 10px;
+    background-color: #bdb5b5;
+}
+
+.card-container{
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+.card{
+    width: 100%;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+}
+
+.card-head{
+    width: 100%;
+    height: 48px;
+    background-color: rgb(16, 157, 16);
+}
+
+.card-head-content{
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+
+.card-content{
+    padding-left: 20px;
+}
+
+.form{
+    display: flex;
+    grid-template-columns: 15% 15%; 
+    gap: 40px;
+    
+}
+
+.form-text-field{
+    margin-top: -15px;
+}

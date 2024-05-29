@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Page</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <body>
+        <header>
+            <div class="title">
+                <h1>Item Manage</h1>
+            </div>
+    
+            <div class="nav-bar">
+                <ul>
+                    <div class="nav-item">
+                        <li><a href="/index.html">Home</a></li>
+                    </div>
+                    <div class="nav-item">
+                        <li><a href="/pages/customer.html">Customer</a></li>
+                    </div>
+                    <div class="nav-item">
+                        <li><a href="">Item</a></li>
+                    </div>
+                    <div class="nav-item">
+                        <li><a href="">Order</a></li>
+                    </div>      
+                </ul>          
+            </div>
+        </header>
+    
+        <div id="content">
+            <form>
+                <h1 class="section-header">Item Form</h1>
+    
+                <p class="detail-title">item Code</p>
+                <textarea name="item code" id="itemCode" rows="1" class="text-field"></textarea>
+    
+                <p class="detail-title">Item Name</p>
+                <textarea name="item name" id="itemName" rows="1" class="text-field"></textarea>
+    
+                <p class="detail-title">Item Qty</p>
+                <textarea name="item qty" id="itemQty" rows="1" class="text-field"></textarea>
+    
+                <p class="detail-title">Unit Price</p>
+                <textarea name="unit price" id="unitPrice" rows="1" class="text-field"></textarea>
+    
+                <br>
+    
+                <div class="btn-list">
+                    <button class="btn-save button">Save Customer</button>
+                    <button class="btn-remove button">Remove</button>
+                    <button class="btn-update button">Update</button>
+                    <button class="btn-getall button">Get All</button>
+                    <button class="btn-clearall button">Clear All</button>
+                </div>
+            </form>
+    
+            <div class="table">
+                <table>
+                        <thead>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Item name</th>
+                                <th>Item Qty</th>
+                                <th>Item Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-row">
+                            
+                        </tbody>
+                </table>
+            </div>
+            
+    
+            
+        </div>
+    
+        <script src="/controller/Customer Controller.js"></script>
+</body>
+</html>
