@@ -36,7 +36,7 @@
             <h1 class="section-header">Customer Registration</h1>
 
             <p class="detail-title">Customer ID</p>
-            <textarea name="customer id" id="CustomerID" rows="1" class="text-field"></textarea>
+            <textarea name="customer id" id="CustomerId" rows="1" class="text-field"></textarea>
 
             <p class="detail-title">Customer Name</p>
             <textarea name="customer name" id="CustomerName" rows="1" class="text-field"></textarea>
@@ -50,10 +50,10 @@
             <br>
 
             <div class="btn-list">
-                <button class="btn-save button">Save Customer</button>
+                <button class="btn-save button" onclick="saveCustomer()">Save Customer</button>
                 <button class="btn-remove button">Remove</button>
                 <button class="btn-update button">Update</button>
-                <button class="btn-getall button">Get All</button>
+                <button class="btn-getall button" onclick="loadAllCustomers()">Get All</button>
                 <button class="btn-clearall button">Clear All</button>
             </div>
         </form>
@@ -68,8 +68,8 @@
                             <th>Customer Salary</th>
                         </tr>
                     </thead>
-                    <tbody class="table-row">
-                        
+                    <tbody id="table-body">
+                        <tr></tr>
                     </tbody>
             </table>
         </div>
@@ -78,6 +78,6 @@
         
     </div>
 
-    <script src="/controller/Customer Controller.js"></script>
+    <script type="module" src="/controller/Customer Controller.js"></script>
 </body>
 </html>
