@@ -80,28 +80,28 @@ header{
     cursor: pointer;
 }
 
-.btn-save{
+#btn-save{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: rgb(75, 201, 223);
     color: white;
 }
 
-.btn-remove{
+#btn-remove{
     background-color: rgb(221, 49, 49);
     color: white;
 }
 
-.btn-update{
+#btn-update{
     background-color: rgb(255, 234, 0);
 }
 
-.btn-getall{
+#btn-getall{
     background-color: green;
     color: white;
 }
 
-.btn-clearall{
+#btn-clearall{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: rgb(221, 49, 49);
@@ -130,5 +130,55 @@ header{
 #table-body{
     font-size: 50px;
     background-color: aqua;
+}
+
+.section{
+    display: none;
+}
+
+.section:target{
+    display: block;
+}
+
+
+
+.card-container{
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+.card{
+    width: 100%;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+}
+
+.card-head{
+    width: 100%;
+    height: 48px;
+    background-color: rgb(16, 157, 16);
+}
+
+.card-head-content{
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+
+.card-content{
+    padding-left: 20px;
+}
+
+.form{
+    display: flex;
+    grid-template-columns: 15% 15%; 
+    gap: 40px;
+    
+}
+
+.form-text-field{
+    margin-top: -15px;
 }
 

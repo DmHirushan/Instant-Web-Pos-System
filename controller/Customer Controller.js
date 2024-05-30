@@ -1,50 +1,94 @@
-import { getAllCustomers, save } from '../model/CustomerModel.js';
+import { getAll, remove, save, search } from '../model/CustomerModel.js';
 
-loadAllCustomers()
 
-function loadAllCustomers(){
-    let customers = getAllCustomers()
-    
-    for(let i=0; i<customers.length; i++){
-        reloadTable(customers[i])
-    } 
+clearTable();
+loadAllCustomers();
+
+
+export { saveCustomer, deleteCustomer, searchCustomer };
+
+
+function loadAllCustomers() {
+    let customers = getAll();
+    customers.forEach(customer => {
+        reloadTable(customer);
+    });
 }
 
-function reloadTable(customer){
-    // alert('kjhkds')
-     // Get the table body element
-    // var table = document.getElementsByClassName('.table')
-    var tableBody = document.getElementById('table-body')
+function reloadTable(customer) {
+    let tableBody = document.getElementById('table-body');
+    let newRow = tableBody.insertRow();
 
-    // Create a new row
-    var newRow = tableBody.insertRow();
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2);
+    let cell4 = newRow.insertCell(3);
 
-    // Insert new cells in the new row
-    var cell1 = newRow.insertCell(0);
-    var cell2 = newRow.insertCell(1);
-    var cell3 = newRow.insertCell(2);
-    var cell4 = newRow.insertCell(3);
-
-    // Add some text to the new cells
-    cell1.innerHTML = customer.cusId;
-    cell2.innerHTML = customer.cusName;
-    cell3.innerHTML = customer.cusAddress;
-    cell4.innerHTML = customer.cusSalary;
+    cell1.textContent = customer.cusId;
+    cell2.textContent = customer.cusName;
+    cell3.textContent = customer.cusAddress;
+    cell4.textContent = customer.cusSalary;
 }
 
-export function saveCustomer(){
+function saveCustomer() {
     let id = document.getElementById('CustomerId').value;
     let name = document.getElementById('CustomerName').value;
     let address = document.getElementById('CustomerAddress').value;
     let salary = document.getElementById('CustomerSalary').value;
 
-    let Customer = {
-        cusId : id,
-        cusName : name,
-        cusAddress : address,
-        cusSalary : salary
-    }
-    save(Customer)
-    loadAllCustomers()
-    alert('badu wada')
+    let customer = {
+        cusId: id,
+        cusName: name,
+        cusAddress: address,
+        cusSalary: salary
+    };
+
+    save(customer);
+    clearTable();
+    loadAllCustomers();
 }
+
+function clearTable() {
+    let tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = "";
+}
+
+function deleteCustomer() {
+    let cusId = document.getElementById('CustomerId').value;
+    let customers = getAll();
+
+    for (let i = 0; i < customers.length; i++) {
+        if (cusId === customers[i].cusId) {
+            remove(i);
+            break;
+        }
+    }
+    clearTable();
+    loadAllCustomers();
+}
+
+function searchCustomer(){
+    let cusId = document.getElementById('CustomerId').value;
+    let customers = getAll();
+    let searchedCustomer = null;
+    
+    for(let i=0; i<customers.length; i++){
+        if(cusId === customers[i].cusId){
+            console.log('bduwda');
+             searchedCustomer = search(i);
+             break;
+        }
+    }
+
+    if(searchedCustomer === null){
+        alert('There is no Customer on that ID!');
+    }else{
+
+        document.getElementById('CustomerName').value = searchedCustomer.cusName;
+        document.getElementById('CustomerAddress').value = searchedCustomer.cusAddress;
+        document.getElementById('CustomerSalary').value = searchedCustomer.cusSalary;
+    }
+    
+}
+
+

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
+
     <header>
         <div class="title">
             <h1>Home</h1>
@@ -16,20 +17,182 @@
         <div class="nav-bar">
             <ul>
                 <div class="nav-item">
-                    <li><a href="">Home</a></li>
+                    <li><a href="#default">Home</a></li>
                 </div>
                 <div class="nav-item">
-                    <li><a href="/pages/customer.html">Customer</a></li>
+                    <li><a href="#customer-section">Customer</a></li>
                 </div>
                 <div class="nav-item">
-                    <li><a href="/pages/item.html">Item</a></li>
+                    <li><a href="#item-section">Item</a></li>
                 </div>
                 <div class="nav-item">
-                    <li><a href="">Order</a></li>
+                    <li><a href="#order-section">Order</a></li>
                 </div>        
             </ul> 
         </div>
     </header>
+<div id="default" class="section">
+
+</div>
+
+
+    <!-- Customer Section -->
+    <section id="customer-section" class="section">
+        <div id="content">
+            <form id="form">
+                <h1 class="section-header">Customer Registration</h1>
+                <p class="detail-title">Customer ID</p>
+                <textarea id="CustomerId" rows="1" class="text-field"></textarea>
+                <p class="detail-title">Customer Name</p>
+                <textarea id="CustomerName" rows="1" class="text-field"></textarea>
+                <p class="detail-title">Customer Address</p>
+                <textarea id="CustomerAddress" rows="1" class="text-field"></textarea>
+                <p class="detail-title">Customer Salary</p>
+                <textarea id="CustomerSalary" rows="1" class="text-field"></textarea>
+                <br>
+                <div id="btn-list">
+                    <button id="btn-save" class="button">Save Customer</button>
+                    <button id="btn-remove" class="button">Remove</button>
+                    <button id="btn-update" class="button">Update</button>
+                    <button id="btn-getall" class="button">Get All</button>
+                    <button id="btn-clearall" class="button">Clear All</button>
+                </div>
+            </form>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer Name</th>
+                            <th>Customer Address</th>
+                            <th>Customer Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+            </div>
+        </div>
+    </section>
+    <script type="module">
+        import { saveCustomer } from '../controller/customer Controller.js';
+        document.getElementById('btn-save').addEventListener('click', saveCustomer);
+
+        import { deleteCustomer } from '../controller/customer Controller.js'
+        document.getElementById('btn-remove').addEventListener('click', deleteCustomer);
+
+        import { searchCustomer } from '../controller/customer Controller.js'
+        // document.getElementById('btn-remove').addEventListener('click', searchCustomer);
+        
+
+        document.getElementById('CustomerId').addEventListener('keyup', function(event){
+            if(event.key === 'Enter'){
+                searchCustomer();
+            }
+        })
+    </script>
+
+
+</section>
+
+
+<!-- ----Item Section---- -->
+
+<div id="item-section" class="section">
+    <div id="content">
+        <form>
+            <h1 class="section-header">Item Form</h1>
+
+            <p class="detail-title">item Code</p>
+            <textarea name="item code" id="itemCode" rows="1" class="text-field"></textarea>
+
+            <p class="detail-title">Item Name</p>
+            <textarea name="item name" id="itemName" rows="1" class="text-field"></textarea>
+
+            <p class="detail-title">Item Qty</p>
+            <textarea name="item qty" id="itemQty" rows="1" class="text-field"></textarea>
+
+            <p class="detail-title">Unit Price</p>
+            <textarea name="unit price" id="unitPrice" rows="1" class="text-field"></textarea>
+
+            <br>
+
+            <div id="btn-list">
+                <button id="btn-save" class="button">Save Customer</button>
+                <button id="btn-remove" class="button">Remove</button>
+                <button id="btn-update" class="button">Update</button>
+                <button id="btn-getall" class="button">Get All</button>
+                <button id="btn-clearall" class="button">Clear All</button>
+            </div>
+        </form>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Code</th>
+                        <th>Item name</th>
+                        <th>Item Qty</th>
+                        <th>Item Price</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+<!-- ----Order Section---- -->
+
+<div id="order-section" class="section">
+    <div class="card-container">
+        <div class="card">
+            <div class="card-head">
+                <div class="card-head-content">
+                    Invoice Details
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div class="form">
+
+                    <div class="form-pharase">
+                        <p>Order ID : </p>
+                        <textarea name="order id" id="OrderId" class="form-text-field"></textarea>
+                    </div>
+
+                    <div class="form-pharase">
+                        <p class="form-text">Date : </p>
+                        <textarea name="date" id="Date" class="form-text-field"></textarea>
+                    </div>
+
+                    <div class="form-pharase">
+                        <p>Customer : </p>
+                        <textarea name="customer" id="Customer"></textarea>
+                    </div>
+
+                    <div class="form-pharase">
+                        <p>Customer ID : </p>
+                        <textarea name="customer id" id="Customer Id"></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
     
 </body>
 </html>
