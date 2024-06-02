@@ -15,3 +15,7 @@ export function remove(index){
 export function search(index){
     return customers[index];
 }
+
+export function update(index, customer){
+    customers[index] = customer;
+}

@@ -80,28 +80,28 @@ header{
     cursor: pointer;
 }
 
-#btn-save{
+#btn-save-customer, #btn-save-item{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: rgb(75, 201, 223);
     color: white;
 }
 
-#btn-remove{
+#btn-remove-customer, #btn-remove-item{
     background-color: rgb(221, 49, 49);
     color: white;
 }
 
-#btn-update{
+#btn-update-customer, #btn-update-item{
     background-color: rgb(255, 234, 0);
 }
 
-#btn-getall{
+#btn-getall-customer, #btn-getall-item{
     background-color: green;
     color: white;
 }
 
-#btn-clearall{
+#btn-clearall-customer, #btn-clearall-item{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: rgb(221, 49, 49);
@@ -127,7 +127,12 @@ header{
     text-align: left;
 }
 
-#table-body{
+.table table tr:hover{
+    background-color: rgb(250, 165, 165);
+    cursor: pointer;
+}
+
+#customer-table-body, #item-table-body{
     font-size: 50px;
     background-color: aqua;
 }

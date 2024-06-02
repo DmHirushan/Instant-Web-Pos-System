@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <!-- <link rel="stylesheet" href="/css/styles.css"> --> 
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
@@ -51,15 +51,15 @@
                 <textarea id="CustomerSalary" rows="1" class="text-field"></textarea>
                 <br>
                 <div id="btn-list">
-                    <button id="btn-save" class="button">Save Customer</button>
-                    <button id="btn-remove" class="button">Remove</button>
-                    <button id="btn-update" class="button">Update</button>
-                    <button id="btn-getall" class="button">Get All</button>
-                    <button id="btn-clearall" class="button">Clear All</button>
+                    <button id="btn-save-customer" class="button" type="button">Save Customer</button>
+                    <button id="btn-remove-customer" class="button"  type="button">Remove</button>
+                    <button id="btn-update-customer" class="button" type="button">Update</button>
+                    <button id="btn-getall-customer" class="button" type="button">Get All</button>
+                    <button id="btn-clearall-customer" class="button" type="button">Clear All</button>
                 </div>
             </form>
             <div class="table">
-                <table>
+                <table id="customer-table">
                     <thead>
                         <tr>
                             <th>Customer ID</th>
@@ -68,25 +68,26 @@
                             <th>Customer Salary</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body"></tbody>
+                    <tbody id="customer-table-body"></tbody>
                 </table>
             </div>
         </div>
-    </section>
-    
-            </div>
-        </div>
-    </section>
+
     <script type="module">
         import { saveCustomer } from '../controller/customer Controller.js';
-        document.getElementById('btn-save').addEventListener('click', saveCustomer);
+        document.getElementById('btn-save-customer').addEventListener('click', saveCustomer);
 
-        import { deleteCustomer } from '../controller/customer Controller.js'
-        document.getElementById('btn-remove').addEventListener('click', deleteCustomer);
+        import { deleteCustomer } from '../controller/customer Controller.js';
+        document.getElementById('btn-remove-customer').addEventListener('click', deleteCustomer);
 
-        import { searchCustomer } from '../controller/customer Controller.js'
+        // import { searchCustomer } from '../controller/customer Controller.js';
         // document.getElementById('btn-remove').addEventListener('click', searchCustomer);
         
+        import { updateCustomer } from '../controller/customer Controller.js';
+        document.getElementById('btn-update-customer').addEventListener('click', updateCustomer);
+
+        import { clearFields } from '../controller/customer Controller.js';
+        document.getElementById('btn-clearall-customer').addEventListener('click', clearFields);
 
         document.getElementById('CustomerId').addEventListener('keyup', function(event){
             if(event.key === 'Enter'){
@@ -101,36 +102,36 @@
 
 <!-- ----Item Section---- -->
 
-<div id="item-section" class="section">
+<section id="item-section" class="section">
     <div id="content">
         <form>
             <h1 class="section-header">Item Form</h1>
 
             <p class="detail-title">item Code</p>
-            <textarea name="item code" id="itemCode" rows="1" class="text-field"></textarea>
+            <textarea name="item code" id="ItemCode" rows="1" class="text-field"></textarea>
 
             <p class="detail-title">Item Name</p>
-            <textarea name="item name" id="itemName" rows="1" class="text-field"></textarea>
+            <textarea name="item name" id="ItemName" rows="1" class="text-field"></textarea>
 
             <p class="detail-title">Item Qty</p>
-            <textarea name="item qty" id="itemQty" rows="1" class="text-field"></textarea>
+            <textarea name="item qty" id="ItemQty" rows="1" class="text-field"></textarea>
 
             <p class="detail-title">Unit Price</p>
-            <textarea name="unit price" id="unitPrice" rows="1" class="text-field"></textarea>
+            <textarea name="unit price" id="UnitPrice" rows="1" class="text-field"></textarea>
 
             <br>
 
             <div id="btn-list">
-                <button id="btn-save" class="button">Save Customer</button>
-                <button id="btn-remove" class="button">Remove</button>
-                <button id="btn-update" class="button">Update</button>
-                <button id="btn-getall" class="button">Get All</button>
-                <button id="btn-clearall" class="button">Clear All</button>
+                <button id="btn-save-item" class="button" type="button">Save Customer</button>
+                <button id="btn-remove-item" class="button" type="button">Remove</button>
+                <button id="btn-update-item" class="button" type="button">Update</button>
+                <button id="btn-getall-item" class="button" type="button">Get All</button>
+                <button id="btn-clearall-item" class="button" type="button">Clear All</button>
             </div>
         </form>
 
         <div class="table">
-            <table>
+            <table id="item-table">
                 <thead>
                     <tr>
                         <th>Item Code</th>
@@ -139,7 +140,7 @@
                         <th>Item Price</th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
+                <tbody id="item-table-body">
 
                 </tbody>
             </table>
@@ -149,7 +150,32 @@
 
     </div>
 
-</div>
+    <script type="module">
+        import { saveItem } from '../controller/ItemController.js';
+        document.getElementById('btn-save-item').addEventListener('click', saveItem);
+
+        import { deleteItem } from '../controller/ItemController.js';
+        document.getElementById('btn-remove-item').addEventListener('click', deleteItem);
+
+        // import { searchItem } from '../controller/ItemController.js';
+        // document.getElementById('btn-remove').addEventListener('click', searchCustomer);
+        
+        import { updateItem } from '../controller/ItemController.js';
+        document.getElementById('btn-update-item').addEventListener('click', updateItem);
+
+        import { clearFields } from '../controller/ItemController.js';
+        document.getElementById('btn-clearall-item').addEventListener('click', clearFields);
+
+        document.getElementById('ItemCode').addEventListener('keyup', function(event){
+            if(event.key === 'Enter'){
+                searchItem();
+            }
+        })
+    </script>
+
+    
+
+</section>
 
 
 <!-- ----Order Section---- -->
