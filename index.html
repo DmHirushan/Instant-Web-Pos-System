@@ -182,6 +182,9 @@
 <!-- ----Order Section---- -->
 
 <section id="order-section" class="section">
+
+    
+
     <div class="card-container">
         <div class="card-invoice-details">
             <div class="card-head">
@@ -191,7 +194,7 @@
                 <div>
                     <p>Order ID : </p>
                     
-                    <textarea name="order id" id="OrderId" ></textarea>
+                    <textarea name="order id" id="OrderSectionOrderId" ></textarea>
                     
                     
                 </div>
@@ -208,19 +211,19 @@
                 </div>
                 <div>
                     <p>Customer ID :</p>
-                    <textarea name="customer id" id="CustomerId"></textarea>
+                    <textarea name="customer id" id="OrderSectionCustomerId"></textarea>
                 </div>
                 <div>
                     <p>Name :</p>
-                    <textarea name="customer name" id="CustomerName"></textarea>
+                    <textarea name="customer name" id="OrderSectionCustomerName"></textarea>
                 </div>
                 <div>
                     <p>Salary : </p>
-                    <textarea name="salary" id="CustomerSalary"></textarea>
+                    <textarea name="salary" id="OrderSectionCustomerSalary"></textarea>
                 </div>
                 <div>
                     <p>Address :</p>
-                    <textarea name="customer address" id="CustomerAddress"></textarea>
+                    <textarea name="customer address" id="OrderSectionCustomerAddress"></textarea>
                 </div>
             </div>
         </div>
@@ -241,20 +244,20 @@
                 </div>
                 <div>
                     <p>ItemCode</p>
-                    <textarea name="item code" id="ItemCode" ></textarea>
+                    <textarea name="item code" id="OrderSectionItemCode" ></textarea>
                 </div>
                 <div class="card-content-itemdetails-tab">
                     <div>
                         <p>Item Name :</p>
-                        <textarea name="item name" id="ItemName"></textarea>
+                        <textarea name="item name" id="OrderSectionItemName"></textarea>
                     </div>
                     <div>
                         <p>Price :</p>
-                        <textarea name="item price" id="ItemPrice"></textarea>
+                        <textarea name="item price" id="OrderSectionItemPrice"></textarea>
                     </div>
                     <div>
                         <p>QtyOnH :</p>
-                        <textarea name="qty on hand" id="ItemQty"></textarea>
+                        <textarea name="qty on hand" id="OrderSectionItemQty"></textarea>
                     </div>
                     
                 </div>
@@ -265,7 +268,7 @@
                 </div>
                 <br>
                 <div class="add-item-button-div">
-                    <button type="button" class="add-item-button">Add Item</button>
+                    <button type="button" class="add-item-button" id="add-item-btn">Add Item</button>
                 </div>
             </div>
             
@@ -321,6 +324,12 @@
             </tbody>
         </table>
     </div>
+
+    <script type="module">
+        import { loadTable } from '../controller/OrderController.js';
+        document.getElementById('add-item-btn').addEventListener('click', loadTable);
+    </script>
+
 </section>
     
 </body>

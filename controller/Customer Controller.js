@@ -1,16 +1,15 @@
-import { getAll, remove, save, search, update } from '../model/CustomerModel.js';
+import { getAllCustomers, remove, save, search, update } from '../model/CustomerModel.js';
 
 
 clearTable();
 loadAllCustomers();
-loadDataIntoCustomerField();
 
 export { saveCustomer, deleteCustomer, updateCustomer, clearFields };
 
 
 function loadAllCustomers() {
     // nextCustomerId();
-    let customers = getAll();
+    let customers = getAllCustomers();
     customers.forEach(customer => {
         reloadTable(customer);
     });
@@ -65,7 +64,7 @@ function clearTable() {
 
 function deleteCustomer() {
     let cusId = document.getElementById('CustomerId').value;
-    let customers = getAll();
+    let customers = getAllCustomers();
 
     for (let i = 0; i < customers.length; i++) {
         if (cusId === customers[i].cusId) {
@@ -102,7 +101,7 @@ function deleteCustomer() {
 // }
 
 function nextCustomerId(){
-    let customers = getAll();
+    let customers = getAllCustomers();
     document.getElementById('CustomerId').value = genarateCustomerID(customers[customers.length-1].cusId).toString();
 }
 
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateCustomer(){
     let cusId = document.getElementById('CustomerId').value;
-    let customers = getAll();
+    let customers = getAllCustomers();
     let index = null;
     for(let i=0; i<customers.length; i++){
         if(cusId === customers[i].cusId){
@@ -157,13 +156,3 @@ function updateCustomer(){
 
 
 
-function loadDataIntoCustomerField(){
-    let customers = getAll();
-    let field = document.getElementById('customer-select-field');
-    for(let i=0; i<customers.length; i++){
-        let option = document.createElement('option');
-        // option.value = items[i].itemCode + " " + items[i].itemName;
-        option.textContent = customers[i].cusId + " " + customers[i].cusName;
-        field.appendChild(option);
-    }
-}

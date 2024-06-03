@@ -1,6 +1,6 @@
 import { customers } from '../database/db.js'
 
-export function getAll(){
+export function getAllCustomers(){
     return customers;
 }
 

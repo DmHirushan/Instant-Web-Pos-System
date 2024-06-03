@@ -12,7 +12,7 @@ export let customers = [
         cusAddress : 'Colombo',
         cusSalary : '50000'
     }
-]
+];
 
 export let items = [
     {
@@ -28,4 +28,6 @@ export let items = [
         itemQty : 24,
         itemPrice : 55
     }
-]
+];
+
+export let orders = [];

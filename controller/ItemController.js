@@ -1,14 +1,12 @@
-import { getAll, remove, save, update } from "../model/ItemModel.js"
+import { getAllItems, remove, save, update } from "../model/ItemModel.js"
 
 export { saveItem, deleteItem, updateItem, clearFields }
 
-getAllItems();
-loadDataIntoItemField();
+loadAllItems();
 
-function getAllItems(){
+function loadAllItems(){
     loadNextItemCode();
-    let items = getAll();
-    console.log(items);
+    let items = getAllItems();
     for(let i=0; i<items.length; i++){
         reloadTable(items[i])
     }
@@ -41,7 +39,7 @@ function clearTable() {
 }
 
 function loadNextItemCode(){
-    let items = getAll();
+    let items = getAllItems();
     document.getElementById('ItemCode').value = genarateItemCode(items[items.length-1].itemCode);
 }
 
@@ -69,7 +67,7 @@ function saveItem(){
     }
     save(Item);
     clearTable();
-    getAllItems();
+    loadAllItems();
 }
 
 function clearFields(){
@@ -81,14 +79,14 @@ function clearFields(){
 
 function deleteItem(){
     let result =false;
-    let items = getAll();
+    let items = getAllItems();
     for(let i=0; i<items.length; i++){
         if(itemCodeTextField.value === items[i].itemCode){
             console.log(itemCodeTextField.value)
             remove(i);
             result = true;
             clearTable();
-            getAllItems();
+            loadAllItems();
         }
     }
     if(result === false){
@@ -123,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateItem(){
     let itemCode = document.getElementById('ItemCode').value;
-    let items = getAll();
+    let items = getAllItems();
     let index = null;
     for(let i=0; i<items.length; i++){
         if(itemCode === items[i].itemCode){
@@ -141,17 +139,7 @@ function updateItem(){
     );
     clearFields();
     clearTable();
-    getAllItems();
+    loadAllItems();
 }
 
 
-function loadDataIntoItemField(){
-    let items = getAll();
-    let field = document.getElementById('item-select-field');
-    for(let i=0; i<items.length; i++){
-        let option = document.createElement('option');
-        // option.value = items[i].itemCode + " " + items[i].itemName;
-        option.textContent = items[i].itemCode + " " + items[i].itemName;
-        field.appendChild(option);
-    }
-}

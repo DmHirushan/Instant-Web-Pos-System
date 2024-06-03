@@ -1,6 +1,6 @@
 import { items  } from "../database/db.js";
 
-export function getAll(){
+export function getAllItems(){
     return items;
 }
 

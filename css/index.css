@@ -294,6 +294,19 @@ header{
     text-align: left;
 }
 
+#order-table tbody tr td{
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    font-weight: 50;
+    font-family:'Times New Roman', Times, serif;
+    padding-left: 15px;
+
+    height: 3vw;
+    border: 0px solid aliceblue;
+    text-align: left;
+}
+
 .itemcode-column{
     width: 10vw;
 }
@@ -319,6 +332,11 @@ header{
 
 
 
+#order-section .card-invoice-details textarea{
+    padding-top: 6px;
+    /* font-size: 20px; */
+}
+
 #order-section .card-item-select textarea{
     padding-top: 6px;
     font-size: 20px;
@@ -328,11 +346,11 @@ header{
     width: 220px;
 }
 
-#order-section #ItemPrice{
+#order-section #OrderSectionItemPrice{
     width: 150px;
 }
 
-#order-section #ItemQty{
+#order-section #OrderSectionItemQty{
     width: 100px;
 }
 
