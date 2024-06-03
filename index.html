@@ -6,6 +6,7 @@
     <title>Home Page</title>
     <!-- <link rel="stylesheet" href="/css/styles.css"> --> 
     <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/5f61793cc7.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -180,45 +181,147 @@
 
 <!-- ----Order Section---- -->
 
-<div id="order-section" class="section">
+<section id="order-section" class="section">
     <div class="card-container">
-        <div class="card">
+        <div class="card-invoice-details">
             <div class="card-head">
-                <div class="card-head-content">
-                    Invoice Details
-                </div>
+                <p>Invoice Details</p>
             </div>
-
             <div class="card-content">
-                <div class="form">
-
-                    <div class="form-pharase">
-                        <p>Order ID : </p>
-                        <textarea name="order id" id="OrderId" class="form-text-field"></textarea>
-                    </div>
-
-                    <div class="form-pharase">
-                        <p class="form-text">Date : </p>
-                        <textarea name="date" id="Date" class="form-text-field"></textarea>
-                    </div>
-
-                    <div class="form-pharase">
-                        <p>Customer : </p>
-                        <textarea name="customer" id="Customer"></textarea>
-                    </div>
-
-                    <div class="form-pharase">
-                        <p>Customer ID : </p>
-                        <textarea name="customer id" id="Customer Id"></textarea>
-                    </div>
-
+                <div>
+                    <p>Order ID : </p>
+                    
+                    <textarea name="order id" id="OrderId" ></textarea>
+                    
+                    
                 </div>
-
+                <div>
+                    <p>Date :</p>
+                    <!-- <textarea name="date" id="Date" ></textarea> -->
+                    <input type="date" id="date-picker">
+                </div>
+                <div>
+                    <p>Customer :</p>
+                    <select name="customer" id="customer-select-field">
+                        <option value="" disabled selected>Select Customer</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Customer ID :</p>
+                    <textarea name="customer id" id="CustomerId"></textarea>
+                </div>
+                <div>
+                    <p>Name :</p>
+                    <textarea name="customer name" id="CustomerName"></textarea>
+                </div>
+                <div>
+                    <p>Salary : </p>
+                    <textarea name="salary" id="CustomerSalary"></textarea>
+                </div>
+                <div>
+                    <p>Address :</p>
+                    <textarea name="customer address" id="CustomerAddress"></textarea>
+                </div>
             </div>
+        </div>
+
+        <div class="card-item-select">
+            <div class="card-head">
+                <p>Item Select</p>
+            </div>
+            <div class="card-content">
+                <div>
+                    <p>Item :</p>
+                    
+                    <select name="item" id="item-select-field">
+                        <option value="" disabled selected>Select Item</option>
+                    </select>
+                    <!-- <img src="/assets/down arrow.jpg" alt=""> -->
+                    
+                </div>
+                <div>
+                    <p>ItemCode</p>
+                    <textarea name="item code" id="ItemCode" ></textarea>
+                </div>
+                <div class="card-content-itemdetails-tab">
+                    <div>
+                        <p>Item Name :</p>
+                        <textarea name="item name" id="ItemName"></textarea>
+                    </div>
+                    <div>
+                        <p>Price :</p>
+                        <textarea name="item price" id="ItemPrice"></textarea>
+                    </div>
+                    <div>
+                        <p>QtyOnH :</p>
+                        <textarea name="qty on hand" id="ItemQty"></textarea>
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="order-quantity-div">
+                    <p>Order Quantity :</p>
+                    <textarea name="order quantity" id="OrderQuantity"></textarea>
+                </div>
+                <br>
+                <div class="add-item-button-div">
+                    <button type="button" class="add-item-button">Add Item</button>
+                </div>
+            </div>
+            
+
+            
 
         </div>
+
+        <div class="card">
+            <div class="bill-card-content">
+                <p class="total">Total : <label for="">00.0</label>Rs/=</p>
+                <p class="sub-total">SubTotal : <label for="">00.0</label>Rs/=</p>
+
+                <div class="cash-discount-div">
+                    <div>
+                        <p>Cash :</p>
+                        <textarea name="cash" id="Cash"></textarea>
+                    </div>
+                    <div>
+                        <p>Discount : </p>
+                        <textarea name="discount" id="Discount"></textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <p>Balance :</p>
+                    <textarea name="balance" id="Balance"></textarea>
+                </div>
+
+                <div class="purchase-button-div">
+                    <button class="purchase-button">Purchase</button>
+                </div>
+            </div>
+        
+            
+        </div>
     </div>
-</div>
+
+    <div class="order-table-container">
+        <table id="order-table"> 
+            <thead>
+                <tr>
+                    <th class="itemcode-column">Item Code</th>
+                    <th class="itemname-column">Item Name</th>
+                    <th class="price-column">Price</th>
+                    <th class="quantity-column">Quantity</th>
+                    <th class="total-column">Total</th>
+                </tr>
+            </thead>
+
+            <tbody id="order-table-body">
+                
+            </tbody>
+        </table>
+    </div>
+</section>
     
 </body>
 </html>

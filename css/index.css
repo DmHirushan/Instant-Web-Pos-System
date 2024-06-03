@@ -145,45 +145,221 @@ header{
     display: block;
 }
 
+/*=====Order Section Styles=====*/
 
+/* #orderSection{
+    background-color: rgb(138, 231, 231);
+} */
 
 .card-container{
+    padding-top: 20px;
+    gap: 20px;
     display: grid;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 30% 40% 27%;
 }
 
 .card{
-    width: 100%;
-    height: 400px;
-    background-color: rgb(255, 255, 255);
+    background-color: aliceblue;
 }
 
 .card-head{
-    width: 100%;
-    height: 48px;
-    background-color: rgb(16, 157, 16);
-}
-
-.card-head-content{
-    color: white;
     display: flex;
     align-items: center;
-    padding-top: 12px;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(7, 181, 7);
+}
+
+.card-head p{
+    color: white;
     padding-left: 20px;
 }
 
 .card-content{
-    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 10px;
+    padding-left: 15px;
 }
 
-.form{
-    display: flex;
-    grid-template-columns: 15% 15%; 
-    gap: 40px;
-    
+#CustomerAddress{
+    width: 100%;
 }
 
-.form-text-field{
+.card-content textarea{
     margin-top: -15px;
 }
 
+.card-content-itemdetails-tab{
+    display: grid;
+    grid-template-columns: 50% 28% 22%;
+    gap: 100px;
+}
+
+#ItemName{
+    width: 180px;
+}
+
+#ItemPrice{
+    
+}
+
+#ItemQty{
+    width: 80px;
+}
+
+.order-quantity-div{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+#OrderQuantity{
+    width: 180%;
+}
+
+.add-item-button-div{
+    margin-left: 459px;
+    margin-top: 23px;
+}
+
+.add-item-button{
+    color: white;
+    height: 28px;
+    width: 80px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.bill-card-content{
+    padding-left: 15px;
+}
+
+.total{
+    color: rgb(44, 162, 236);
+    font-size: 25px;
+}
+
+.sub-total{
+    color: red;
+    margin-top: -18px;
+    font-size: 25px;
+}
+
+.cash-discount-div{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#Balance{
+    width: 91.5%;
+}
+
+.purchase-button-div{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.purchase-button{
+    height: 28px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(4, 163, 4);
+}
+
+.order-table-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+#order-table{
+    /* border: 1px solid black; */
+}
+
+#order-table thead{
+    background-color: rgb(0, 173, 35);
+}
+
+#order-table thead tr th{
+    color: white;
+    font-size: 17px;
+    font-weight: 50;
+    font-family:'Times New Roman', Times, serif;
+    padding-left: 15px;
+
+    height: 3vw;
+    border: 0px solid aliceblue;
+    text-align: left;
+}
+
+.itemcode-column{
+    width: 10vw;
+}
+.itemname-column{
+    width: 15vw;
+}
+.price-column{
+    width: 10vw;
+}
+.quantity-column{
+    width: 12vw;
+}
+.total-column{
+    width: 10vw;
+}
+
+#order-section textarea{
+    text-align: left;
+    font-size: 20px;
+    width: 180px;
+    height: 30.5px;
+}
+
+
+
+#order-section .card-item-select textarea{
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+#order-section #SelectItemCode{
+    width: 220px;
+}
+
+#order-section #ItemPrice{
+    width: 150px;
+}
+
+#order-section #ItemQty{
+    width: 100px;
+}
+
+#order-section #OrderQuantity{
+    width: 530px;
+}
+
+#date-picker{
+    font-size: 15px;
+    margin-top: -20px;
+    width: 180px;
+    height: 30.5px;
+}
+
+#down-arrow-icon{
+    padding-top: -20px;
+    margin-left: -30px;
+}
+
+#customer-select-field{
+    padding-top: -10px;
+    width: 180px;
+    height: 20px;
+}
+
+#Item{
+    margin-top: -10px;
+    width: 182px;
+    height: 30px;
+}

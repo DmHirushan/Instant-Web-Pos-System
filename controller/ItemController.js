@@ -3,6 +3,7 @@ import { getAll, remove, save, update } from "../model/ItemModel.js"
 export { saveItem, deleteItem, updateItem, clearFields }
 
 getAllItems();
+loadDataIntoItemField();
 
 function getAllItems(){
     loadNextItemCode();
@@ -141,4 +142,16 @@ function updateItem(){
     clearFields();
     clearTable();
     getAllItems();
+}
+
+
+function loadDataIntoItemField(){
+    let items = getAll();
+    let field = document.getElementById('item-select-field');
+    for(let i=0; i<items.length; i++){
+        let option = document.createElement('option');
+        // option.value = items[i].itemCode + " " + items[i].itemName;
+        option.textContent = items[i].itemCode + " " + items[i].itemName;
+        field.appendChild(option);
+    }
 }

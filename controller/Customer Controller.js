@@ -3,7 +3,7 @@ import { getAll, remove, save, search, update } from '../model/CustomerModel.js'
 
 clearTable();
 loadAllCustomers();
-
+loadDataIntoCustomerField();
 
 export { saveCustomer, deleteCustomer, updateCustomer, clearFields };
 
@@ -156,3 +156,14 @@ function updateCustomer(){
 }
 
 
+
+function loadDataIntoCustomerField(){
+    let customers = getAll();
+    let field = document.getElementById('customer-select-field');
+    for(let i=0; i<customers.length; i++){
+        let option = document.createElement('option');
+        // option.value = items[i].itemCode + " " + items[i].itemName;
+        option.textContent = customers[i].cusId + " " + customers[i].cusName;
+        field.appendChild(option);
+    }
+}
