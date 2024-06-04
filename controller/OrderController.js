@@ -1,10 +1,11 @@
-import { getAllItems } from "../model/ItemModel.js";
+import { getAllItems, update } from "../model/ItemModel.js";
 import { getAllCustomers } from "../model/CustomerModel.js";
 import { getAllOrders } from "../model/OrderModel.js";
 
 loadDataIntoItemField();
 loadDataIntoCustomerField();
 autoFillOrderId();
+
 
 function loadDataIntoItemField(){
     let items = getAllItems();
@@ -86,6 +87,14 @@ function generateNextOrderId(currentOrderId){
     return 'Or' + array[1]++;
 }
 
+function clearFields(){
+    itemCodeTextField.value = "";
+    itemNameTextField.value = "";
+    itemPriceTextField.value = "";
+    itemQtyTextField.value = "";
+    orderQuantity.value = "";
+}
+
 let itemCodeTextField = document.getElementById('OrderSectionItemCode');
 let itemNameTextField = document.getElementById('OrderSectionItemName');
 let itemPriceTextField = document.getElementById('OrderSectionItemPrice');
@@ -94,18 +103,44 @@ let orderQuantity = document.getElementById('OrderQuantity');
 
 
 export function loadTable(){
+    if(checkItemQty()){
+        let table = document.getElementById('order-table');
+        let rowsLength = table.rows.length;
+        // findTotal();
+        if(rowsLength > 1){
+            console.log('atult awa..');
+            checkItemAlreadyExists();
+        }else{
+            var tableBody = document.getElementById('order-table-body');
+            var newRow = tableBody.insertRow();
 
-    checkItemAlreadyExists();
+            newRow.insertCell(0).innerHTML = itemCodeTextField.value;
+            newRow.insertCell(1).innerHTML = itemNameTextField.value;
+            newRow.insertCell(2).innerHTML = itemPriceTextField.value;
+            newRow.insertCell(3).innerHTML = orderQuantity.value;
+            newRow.insertCell(4).innerHTML = calculateOneItemTotal();
+        }
+        clearFields();
+        findTotal();
+    }else{
+        alert('This much amount is not avilable in the Store!');
+    }  
 
-    var tableBody = document.getElementById('order-table-body');
-    var newRow = tableBody.insertRow();
+}
 
-    newRow.insertCell(0).innerHTML = itemCodeTextField.value;
-    newRow.insertCell(1).innerHTML = itemNameTextField.value;
-    newRow.insertCell(2).innerHTML = itemPriceTextField.value;
-    newRow.insertCell(3).innerHTML = orderQuantity.value;
-    newRow.insertCell(4).innerHTML = calculateOneItemTotal();
-
+function checkItemQty(){
+    let itemsArray = getAllItems();
+    for(let i=0; i<itemsArray.length; i++){
+        if(itemCodeTextField.value === itemsArray[i].itemCode){
+            if(orderQuantity.value <= itemsArray[i].itemQty){
+                console.log(itemsArray[i].itemQty - parseInt(orderQuantity.value, 10));
+                itemsArray[i].itemQty = itemsArray[i].itemQty - parseInt(orderQuantity.value, 10);
+                console.log(itemsArray);
+                update(i, itemsArray[i]);
+                return true;
+            }
+        }
+    }
 }
 
 function calculateOneItemTotal(){
@@ -114,10 +149,63 @@ function calculateOneItemTotal(){
 
 function checkItemAlreadyExists(){
     let tableRowCount = document.getElementById('order-table').rows.length;
-    console.log(tableRowCount);
-    for(let i=0; i<tableRowCount; i++){
-        if(itemCodeTextField.value === ){
-
+    let table = document.getElementById('order-table');
+    let isExists = false;
+    for(let i=1; i<tableRowCount; i++){
+        if(itemCodeTextField.value === table.rows[i].cells[0].innerHTML){
+            table.rows[i].cells[3].innerHTML =  parseInt(table.rows[i].cells[3].innerHTML, 10) + parseInt(orderQuantity.value, 10);
+            table.rows[i].cells[4].innerHTML = parseInt(table.rows[i].cells[4].innerHTML,) + calculateOneItemTotal();
+            isExists = true;
+            break;
         }
     }
+    if(!isExists){
+        var tableBody = document.getElementById('order-table-body');
+        var newRow = tableBody.insertRow();
+
+        newRow.insertCell(0).innerHTML = itemCodeTextField.value;
+        newRow.insertCell(1).innerHTML = itemNameTextField.value;
+        newRow.insertCell(2).innerHTML = itemPriceTextField.value;
+        newRow.insertCell(3).innerHTML = orderQuantity.value;
+        newRow.insertCell(4).innerHTML = calculateOneItemTotal();
+    }
+}
+
+function findTotal(){
+    let tableRowCount = document.getElementById('order-table').rows.length;
+    let table = document.getElementById('order-table');
+    let total = 0;
+    for(let i=1; i<tableRowCount; i++){
+        total += parseInt(table.rows[i].cells[4].innerHTML, 10);
+    }
+    document.getElementById('TotalLabel').innerHTML = total;
+    document.getElementById('SubTotalLabel').innerHTML = total;
+}
+
+
+document.getElementById('Cash').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        calculateBalance();
+    }
+});
+
+function calculateBalance(){
+    if(document.getElementById('Discount').value === ""){
+        document.getElementById('Balance').value = document.getElementById('Cash').value - document.getElementById('TotalLabel').innerHTML;
+    }else{
+        decreaseDiscountFromTotal();
+        document.getElementById('Balance').value = document.getElementById('Cash').value - document.getElementById('TotalLabel').innerHTML;
+    }
+    
+}
+
+function decreaseDiscountFromTotal(){
+    document.getElementById('TotalLabel').innerHTML -=  parseInt(document.getElementById('TotalLabel').innerHTML, 10) * (splitDiscount((document.getElementById('Discount').value))/100);
+}
+
+function splitDiscount(discount){
+    let array = discount.split('%');
+    console.log(array);
+    return array[0];
 }

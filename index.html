@@ -279,8 +279,8 @@
 
         <div class="card">
             <div class="bill-card-content">
-                <p class="total">Total : <label for="">00.0</label>Rs/=</p>
-                <p class="sub-total">SubTotal : <label for="">00.0</label>Rs/=</p>
+                <p class="total">Total : <label for="" id="TotalLabel">00.0</label>Rs/=</p>
+                <p class="sub-total">SubTotal : <label for="" id="SubTotalLabel">00.0</label>Rs/=</p>
 
                 <div class="cash-discount-div">
                     <div>
@@ -289,7 +289,7 @@
                     </div>
                     <div>
                         <p>Discount : </p>
-                        <textarea name="discount" id="Discount"></textarea>
+                        <textarea name="discount" id="Discount" placeholder="10%"></textarea>
                     </div>
                 </div>
 
@@ -328,6 +328,8 @@
     <script type="module">
         import { loadTable } from '../controller/OrderController.js';
         document.getElementById('add-item-btn').addEventListener('click', loadTable);
+
+         
     </script>
 
 </section>
