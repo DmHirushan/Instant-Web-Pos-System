@@ -1,4 +1,5 @@
-import { getAllItems, remove, save, update } from "../model/ItemModel.js"
+import { getAllItems, remove, save, update } from "../model/ItemModel.js";
+import { loadDataIntoItemField } from '../controller/OrderController.js';
 
 export { saveItem, deleteItem, updateItem, clearFields }
 
@@ -71,6 +72,7 @@ function saveItem(){
             itemPrice : itemPrice
         }
         save(Item);
+        loadDataIntoItemField();
         clearTable();
         loadAllItems();
     }

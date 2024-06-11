@@ -1,4 +1,5 @@
 import { getAllCustomers, remove, save, search, update } from '../model/CustomerModel.js';
+import { loadDataIntoCustomerField } from '../controller/OrderController.js';
 
 
 clearTable();
@@ -45,6 +46,7 @@ function saveCustomer() {
         };
     
         save(customer);
+        loadDataIntoCustomerField();
         clearFields();
         nextCustomerId();
         clearTable();

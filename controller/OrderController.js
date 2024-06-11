@@ -13,9 +13,10 @@ function initialAlert(){
 }
 
 
-function loadDataIntoItemField(){
+export function loadDataIntoItemField(){
     let items = getAllItems();
     let field = document.getElementById('item-select-field');
+    field.innerHTML = '';
     for(let i=0; i<items.length; i++){
         let option = document.createElement('option');
         // option.value = items[i].itemCode + " " + items[i].itemName;
@@ -50,9 +51,10 @@ function splitItemCodeFromFieldValue(value){
 }
 
 
-function loadDataIntoCustomerField(){
-    let customers = getAllCustomers();
+export function loadDataIntoCustomerField(){
     let field = document.getElementById('customer-select-field');
+    field.innerHTML = '';
+    let customers = getAllCustomers();  
     for(let i=0; i<customers.length; i++){
         let option = document.createElement('option');
         // option.value = items[i].itemCode + " " + items[i].itemName;
@@ -240,4 +242,5 @@ export function save(){
     }
     saveOrder(order);
     clearCustomerDetailTextFields();
+    alert('Order Purchased Successfully!');
 }

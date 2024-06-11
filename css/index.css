@@ -80,6 +80,10 @@ header{
     cursor: pointer;
 }
 
+#CustomerAddress{
+    width: 200px;
+}
+
 #btn-save-customer, #btn-save-item{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -182,7 +186,7 @@ header{
     padding-left: 15px;
 }
 
-#CustomerAddress{
+#OrderSectionCustomerAddress{
     width: 100%;
 }
 
