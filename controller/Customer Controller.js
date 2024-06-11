@@ -3,7 +3,7 @@ import { getAllCustomers, remove, save, search, update } from '../model/Customer
 
 clearTable();
 loadAllCustomers();
-
+nextCustomerId();
 export { saveCustomer, deleteCustomer, updateCustomer, clearFields };
 
 
@@ -35,19 +35,79 @@ function saveCustomer() {
     let name = document.getElementById('CustomerName').value;
     let address = document.getElementById('CustomerAddress').value;
     let salary = document.getElementById('CustomerSalary').value;
+    
+    if(validate(name,address,salary)){
+        let customer = {
+            cusId: id,
+            cusName: name,
+            cusAddress: address,
+            cusSalary: salary
+        };
+    
+        save(customer);
+        clearFields();
+        nextCustomerId();
+        clearTable();
+        loadAllCustomers();
+    }
 
-    let customer = {
-        cusId: id,
-        cusName: name,
-        cusAddress: address,
-        cusSalary: salary
-    };
+    
+}
 
-    save(customer);
-    clearFields();
-    nextCustomerId();
-    clearTable();
-    loadAllCustomers();
+function validate(name, address, salary){
+    let nameField = document.getElementById('CustomerName');
+    let addressField = document.getElementById('CustomerAddress');
+    let salaryField = document.getElementById('CustomerSalary');
+
+    let nameValid = false;
+
+    if(name === ''){
+        nameField.placeholder = 'Customer Name can not be empty!';
+        nameField.style.width = '350px';
+        nameField.style.border = '2px solid red';
+        nameValid = false;
+    }else if(/^[a-zA-Z\s]+$/.test(name)){
+        nameValid = true;
+    }else{
+        nameField.placeholder = 'Name Invalid!';
+        nameField.style.border = '2px solid red';
+        nameValid = false;
+    }
+
+    let addressValid = false;
+
+    if(address === ''){
+        addressField.placeholder = 'Address can not be empty!';
+        addressField.style.border = '2px solid red';
+        addressValid  = false;
+    }else if(/^[a-zA-Z0-9\s,'-]+$/.test(address)){
+        addressValid = true;
+    }else{
+        addressField.placeholder = 'Address Invalid!';
+        addressField.style.border = '2px solid red';        
+        addressValid = false;
+    }
+
+    let salaryValid = false;
+
+    if(salary === ''){
+        salaryField.placeholder = 'Salary can not be empty!';
+        salaryField.style.width = '270px';
+        salaryField.style.border = '2px solid red';
+        salaryValid  = false;
+    }else if(/^\d+(\.\d{1,2})?$/.test(salary)){
+        salaryValid = true;
+    }else{
+        salaryField.placeholder = 'Salary Invalid!';
+        salaryField.style.border = '2px solid red';
+        salaryValid = false;
+    }
+
+    if(nameValid === true && addressValid === true && salaryValid === true){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function clearFields(){

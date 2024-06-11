@@ -123,7 +123,7 @@
             <br>
 
             <div id="btn-list">
-                <button id="btn-save-item" class="button" type="button">Save Customer</button>
+                <button id="btn-save-item" class="button" type="button">Save Item</button>
                 <button id="btn-remove-item" class="button" type="button">Remove</button>
                 <button id="btn-update-item" class="button" type="button">Update</button>
                 <button id="btn-getall-item" class="button" type="button">Get All</button>
@@ -223,7 +223,7 @@
                 </div>
                 <div>
                     <p>Address :</p>
-                    <textarea name="customer address" id="OrderSectionCustomerAddress"></textarea>
+                    <textarea name="customer address" id="OrderSectionCustomerSalary"></textarea>
                 </div>
             </div>
         </div>
@@ -299,7 +299,7 @@
                 </div>
 
                 <div class="purchase-button-div">
-                    <button class="purchase-button">Purchase</button>
+                    <button id="purchase-button">Purchase</button>
                 </div>
             </div>
         
@@ -329,7 +329,8 @@
         import { loadTable } from '../controller/OrderController.js';
         document.getElementById('add-item-btn').addEventListener('click', loadTable);
 
-         
+        import { save } from '../controller/OrderController.js';
+        document.getElementById('purchase-button').addEventListener('click', save);
     </script>
 
 </section>

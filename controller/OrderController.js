@@ -1,10 +1,16 @@
 import { getAllItems, update } from "../model/ItemModel.js";
 import { getAllCustomers } from "../model/CustomerModel.js";
 import { getAllOrders } from "../model/OrderModel.js";
+import { saveOrder } from "../model/OrderModel.js";
 
+// initialAlert();
 loadDataIntoItemField();
 loadDataIntoCustomerField();
 autoFillOrderId();
+
+function initialAlert(){
+    alert('Welcome to Place Order Page!');
+}
 
 
 function loadDataIntoItemField(){
@@ -208,4 +214,30 @@ function splitDiscount(discount){
     let array = discount.split('%');
     console.log(array);
     return array[0];
+}
+
+function clearCustomerDetailTextFields(){
+    document.getElementById('OrderSectionOrderId').value = '';
+    document.getElementById('OrderSectionCustomerId').value = '';
+    document.getElementById('OrderSectionCustomerName').value = '';
+    document.getElementById('OrderSectionCustomerSalary').value = '';
+    document.getElementById('OrderSectionCustomerSalary').value = '';
+}
+
+export function save(){
+    let orderId = document.getElementById('OrderSectionOrderId').value;
+    let cusId = document.getElementById('OrderSectionCustomerId').value;
+    let date = document.getElementById('date-picker').innerText;
+    let subTotal = document.getElementById('SubTotalLabel').innerText;
+    let total = document.getElementById('TotalLabel').innerText;
+
+    let order = {
+        orderId : orderId,
+        cusId : cusId,
+        date : date,
+        subTotal : subTotal,
+        total : total
+    }
+    saveOrder(order);
+    clearCustomerDetailTextFields();
 }

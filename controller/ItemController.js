@@ -59,15 +59,71 @@ let unitPriceTextField = document.getElementById('UnitPrice');
 
 function saveItem(){
     console.log('bdu wda');
-    let Item = {
-        itemCode : itemCodeTextField.value,
-        itemName : itemNameTextField.value,
-        itemQty : itemQtyTextField.value,
-        itemPrice : unitPriceTextField.value
+    let itemCode = itemCodeTextField.value;
+    let itemName = itemNameTextField.value;
+    let itemQty = itemQtyTextField.value;
+    let itemPrice = unitPriceTextField.value;
+    if(validate(itemName,itemQty,itemPrice)){
+        let Item = {
+            itemCode : itemCode,
+            itemName : itemName,
+            itemQty : itemQty,
+            itemPrice : itemPrice
+        }
+        save(Item);
+        clearTable();
+        loadAllItems();
     }
-    save(Item);
-    clearTable();
-    loadAllItems();
+    
+}
+
+function validate(itemName,itemQty,itemPrice){
+    let itemNameValid = false;
+    if(itemName === ''){
+        itemNameTextField.placeholder = 'Item Name can not be empty!';
+        itemNameTextField.style.width = '300px';
+        itemNameTextField.style.border = '2px solid red';
+        itemNameValid = false;
+    }else if(/^[a-zA-Z\s]+$/.test(itemName)){
+        itemNameValid = true;
+    }else{
+        itemNameTextField.placeholder = 'Item Name Invalid!';
+        itemNameTextField.style.border = '2px solid red';
+        itemNameValid = false;
+    }
+
+    let itemQtyValid = false;
+    if(itemQty === ''){
+        itemQtyTextField.placeholder = 'Item Quantity can not be empty!';
+        itemQtyTextField.style.width = '347px';
+        itemQtyTextField.style.border = '2px solid red';
+        itemQtyValid = false;
+    }else if(/^[1-9][0-9]*$/.test(itemQty)){
+        itemQtyValid = true;
+    }else{
+        itemQtyTextField.placeholder = 'Item Quantity Invalid!';
+        itemQtyTextField.style.border = '2px solid red';
+        itemQtyValid = false;
+    }
+
+    let itemPriceValid = false;
+    if(itemPrice === ''){
+        unitPriceTextField.placeholder = 'Item Price can not be empty!';
+        unitPriceTextField.style.width = '310px';
+        unitPriceTextField.style.border = '2px solid red';
+        itemPriceValid = false;
+    }else if(/^\d+(\.\d{1,2})?$/.test(itemPrice)){
+        itemPriceValid = true;
+    }else{
+        unitPriceTextField.placeholder = 'Item Price Invalid!';
+        unitPriceTextField.style.border = '2px solid red';
+        itemPriceValid = false;
+    }
+    if(itemNameValid === true && itemQtyValid === true && itemPriceValid === true){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function clearFields(){

@@ -261,7 +261,7 @@ header{
     justify-content: center;
 }
 
-.purchase-button{
+#purchase-button{
     height: 28px;
     cursor: pointer;
     color: white;
